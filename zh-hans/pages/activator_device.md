@@ -59,7 +59,7 @@
 
   ``` groovy
 	dependencies { 
-    api 'com.tuya.smart:tuyasmart-bizbundle-device_activator:3.20.0-5'
+    api 'com.tuya.smart:tuyasmart-bizbundle-device_activator:3.20.0-6'
 	}
 
   ```
