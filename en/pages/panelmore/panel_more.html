@@ -758,7 +758,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#device-details-bizbundle"><b>1. </b>Device details bizBundle</a></li><ul><li><span class="title-icon "></span><a href="#features"><b>1.1. </b>Features</a></li><li><span class="title-icon "></span><a href="#biz-bundle-integration"><b>1.2. </b>Biz Bundle integration</a></li><ul><li><span class="title-icon "></span><a href="#create-project"><b>1.2.1. </b>Create project</a></li><li><span class="title-icon "></span><a href="#modules-buildgradle-configuration"><b>1.2.2. </b>Module&apos;s build.gradle configuration</a></li></ul><li><span class="title-icon "></span><a href="#function-use"><b>1.3. </b>Function use</a></li></ul></ul></div><a href="#device-details-bizbundle" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="device-details-bizbundle"><a name="device-details-bizbundle" class="anchor-navigation-ex-anchor" href="#device-details-bizbundle"><i class="fa fa-link" aria-hidden="true"></i></a>1. Device details bizBundle</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#device-details-bizbundle"><b>1. </b>Device details bizBundle</a></li><ul><li><span class="title-icon "></span><a href="#features"><b>1.1. </b>Features</a></li><li><span class="title-icon "></span><a href="#biz-bundle-integration"><b>1.2. </b>Biz Bundle integration</a></li><ul><li><span class="title-icon "></span><a href="#create-project"><b>1.2.1. </b>Create project</a></li><li><span class="title-icon "></span><a href="#modules-buildgradle-configuration"><b>1.2.2. </b>Module&apos;s build.gradle configuration</a></li></ul><li><span class="title-icon "></span><a href="#function-use"><b>1.3. </b>Function use</a></li><li><span class="title-icon "></span><a href="#custom-subfunctions"><b>1.4. </b>Custom subfunctions</a></li></ul></ul></div><a href="#device-details-bizbundle" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="device-details-bizbundle"><a name="device-details-bizbundle" class="anchor-navigation-ex-anchor" href="#device-details-bizbundle"><i class="fa fa-link" aria-hidden="true"></i></a>1. Device details bizBundle</h1>
 <h2 id="features"><a name="features" class="anchor-navigation-ex-anchor" href="#features"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. Features</h2>
 <ul>
 <li>Device information editing (device avatar, room, name)</li>
@@ -859,7 +859,7 @@
 </table>
 <h3 id="modules-buildgradle-configuration"><a name="modules-buildgradle-configuration" class="anchor-navigation-ex-anchor" href="#modules-buildgradle-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>1.2.2. Module&apos;s build.gradle configuration</h3>
 <pre class="language-"><code class="lang-groovy">dependencies <span class="token punctuation">{</span>
-  implementation <span class="token string">&apos;com.tuya.smart:tuyasmart-bizbundle-panelmore:3.22.0-5&apos;</span>
+  implementation <span class="token string">&apos;com.tuya.smart:tuyasmart-bizbundle-panelmore:3.22.0-6&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="function-use"><a name="function-use" class="anchor-navigation-ex-anchor" href="#function-use"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. Function use</h2>
@@ -892,7 +892,250 @@ bundle<span class="token punctuation">.</span><span class="token function">putSt
 urlBuilder<span class="token punctuation">.</span><span class="token function">putExtras</span><span class="token punctuation">(</span>bundle<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">UrlRouter</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>urlBuilder<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<h2 id="custom-subfunctions"><a name="custom-subfunctions" class="anchor-navigation-ex-anchor" href="#custom-subfunctions"><i class="fa fa-link" aria-hidden="true"></i></a>1.4. Custom subfunctions</h2>
+<ul>
+<li>The deviceDetail of the configlist. json file inserts the custom type. Note that the type value must start with &quot;C_&quot;.</li>
+</ul>
+<pre class="language-"><code>{&quot;deviceDetail&quot;: [
+    {
+      &quot;type&quot;: &quot;header&quot;
+    },
+    {
+      &quot;type&quot;: &quot;device_info&quot;
+    },
+    {
+      &quot;type&quot;: &quot;device_net_info&quot;
+    },
+    {
+      &quot;type&quot;: &quot;off_line_warn&quot;
+    },
+    {
+      &quot;type&quot;: &quot;section_other&quot;
+    },
+    {
+      &quot;type&quot;:&quot;help_and_feedback&quot;
+    },
+    {
+      &quot;type&quot;:&quot;check_device_network&quot;
+    },
+    {
+      &quot;type&quot;:&quot;check_firmware_update&quot;
+    },
+    {
+      &quot;type&quot;:&quot;c_test_insert&quot;
+    },
+    {
+      &quot;type&quot;:&quot;c_test_async_insert&quot;
+    },
+    {
+      &quot;type&quot;: &quot;empty&quot;,
+      &quot;height&quot;: 10
+    },
+    {
+      &quot;type&quot;: &quot;footer&quot;
+    }
+  ],}
+</code></pre><ul>
+<li>Implement AbsPanelMoreExpandService.</li>
+</ul>
+<h5 id="implement-a-click-event-for-a-custom-type"><a name="implement-a-click-event-for-a-custom-type" class="anchor-navigation-ex-anchor" href="#implement-a-click-event-for-a-custom-type"><i class="fa fa-link" aria-hidden="true"></i></a><a name="implement-a-click-event-for-a-custom-type" class="plugin-anchor" href="#implement-a-click-event-for-a-custom-type"><i class="fa fa-link" aria-hidden="true"></i></a>Implement a click event for a custom type.</h5>
+<p><strong>Declaration</strong></p>
+<pre class="language-"><code>    public abstract void devClickItem(Context context, int action, DeviceBean deviceBean, boolean isAdmin);
+</code></pre><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>android context</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Click on the event identifier</td>
+</tr>
+<tr>
+<td>deviceBean</td>
+<td>Device information</td>
+</tr>
+<tr>
+<td>isAdmin</td>
+<td>Administrator or not</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre class="language-"><code> @Override
+    public void devClickItem(Context context, int action, TextBean data, DeviceBean deviceBean, boolean isAdmin) {
+        if(action == R.id.action_test_insert){
+            // Complementary subfunction
+        }
+    }
+</code></pre><h5 id="synchronously-insert-subfunction-items"><a name="synchronously-insert-subfunction-items" class="anchor-navigation-ex-anchor" href="#synchronously-insert-subfunction-items"><i class="fa fa-link" aria-hidden="true"></i></a><a name="synchronously-insert-subfunction-items" class="plugin-anchor" href="#synchronously-insert-subfunction-items"><i class="fa fa-link" aria-hidden="true"></i></a>Synchronously insert subfunction items</h5>
+<p><strong>Declaration</strong></p>
+<pre class="language-"><code>    public abstract IMenuBean insertDevMenuItem(Context context, String type, boolean isAdmin, DeviceBean deviceBean, float order);
+</code></pre><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>android context</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type defined in configList</td>
+</tr>
+<tr>
+<td>isAdmin</td>
+<td>Administrator or not</td>
+</tr>
+<tr>
+<td>deviceBean</td>
+<td>Device information</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Type is in the configList position and is used to generate the ImenuBean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre class="language-"><code> @Override
+    public IMenuBean insertDevMenuItem(Context context, String type, boolean isAdmin, DeviceBean deviceBean, float order) {
+        if(isAdmin &amp;&amp; TextUtils.equals(type,&quot;c_test_insert&quot;)){
+          return new  IMenuBean(&quot;title&quot;,&quot;subtitle&quot;,&quot;1&quot;,
+                    java.lang.String.valueOf(R.id.action_test_insert),
+                    order,
+                    &quot;test_insert&quot;);
+        }
 
+        return null;
+    }
+</code></pre><h5 id="asynchronous-insertion-of-subfunction-item"><a name="asynchronous-insertion-of-subfunction-item" class="anchor-navigation-ex-anchor" href="#asynchronous-insertion-of-subfunction-item"><i class="fa fa-link" aria-hidden="true"></i></a><a name="asynchronous-insertion-of-subfunction-item" class="plugin-anchor" href="#asynchronous-insertion-of-subfunction-item"><i class="fa fa-link" aria-hidden="true"></i></a>Asynchronous insertion of subfunction item</h5>
+<p><strong>Declaration</strong></p>
+<pre class="language-"><code>    public abstract void insertDevMenuItemAsync(Context context, String type, boolean isAdmin, DeviceBean deviceBean, float order, IMenuItemCallback callback);
+</code></pre><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>android context</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type defined in configList</td>
+</tr>
+<tr>
+<td>isAdmin</td>
+<td>Administrator or not</td>
+</tr>
+<tr>
+<td>deviceBean</td>
+<td>Device information</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Type is in the configList position and is used to generate the ImenuBean</td>
+</tr>
+<tr>
+<td>IMenuItemCallback</td>
+<td>Used to insert a subfunction item</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre class="language-"><code> @Override
+     @Override
+    public void insertDevMenuItemAsync(Context context, String type, boolean isAdmin, DeviceBean deviceBean, float order, IMenuItemCallback callback) {
+        if(isAdmin &amp;&amp; TextUtils.equals(type,&quot;c_test_async_insert&quot;)){
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    callback.setMenuItem( new  IMenuBean(&quot;async_title&quot;,&quot;async_subtitle&quot;,&quot;0&quot;,
+                            java.lang.String.valueOf(R.id.action_test_async_insert),
+                            order));
+                }
+            },1000*5);
+        }
+    }
+</code></pre><h5 id="imenubeana-wrapper-class-for-the-item-subfunction"><a name="imenubeana-wrapper-class-for-the-item-subfunction" class="anchor-navigation-ex-anchor" href="#imenubeana-wrapper-class-for-the-item-subfunction"><i class="fa fa-link" aria-hidden="true"></i></a><a name="imenubeana-wrapper-class-for-the-item-subfunction" class="plugin-anchor" href="#imenubeana-wrapper-class-for-the-item-subfunction"><i class="fa fa-link" aria-hidden="true"></i></a>IMenuBean,a wrapper class for the Item subfunction</h5>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Title</td>
+</tr>
+<tr>
+<td>subTitle</td>
+<td>Subtitle</td>
+</tr>
+<tr>
+<td>click</td>
+<td>Currently only the string &quot;1&quot; is supported</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Click on the event identifier</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Type is in the configList position and is used to generate the ImenuBean</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre class="language-"><code>new  IMenuBean(&quot;title&quot;,&quot;subtitle&quot;,&quot;1&quot;,java.lang.String.valueOf(R.id.action_test_insert),order);
+</code></pre><h5 id="imenuitemcallbackasynchronous-insert-subfunctionality"><a name="imenuitemcallbackasynchronous-insert-subfunctionality" class="anchor-navigation-ex-anchor" href="#imenuitemcallbackasynchronous-insert-subfunctionality"><i class="fa fa-link" aria-hidden="true"></i></a><a name="imenuitemcallbackasynchronous-insert-subfunctionality" class="plugin-anchor" href="#imenuitemcallbackasynchronous-insert-subfunctionality"><i class="fa fa-link" aria-hidden="true"></i></a>IMenuItemCallback,asynchronous insert subfunctionality</h5>
+<p><strong>Declaration</strong></p>
+<pre class="language-"><code>void setMenuItem(IMenuBean item);
+</code></pre><p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IMenuBean</td>
+<td>A wrapper class for the Item subfunction</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre class="language-"><code> callback.setMenuItem(new IMenuBean(&quot;async_title&quot;,&quot;async_subtitle&quot;,&quot;0&quot;,
+                            java.lang.String.valueOf(R.id.action_test_async_insert),
+                            order));
+</code></pre><ul>
+<li>Register AbsPanelMoreExpandService implementation class,it is suggested that this method is invoked in the application#onCreate</li>
+</ul>
+<pre class="language-"><code>    TuyaWrapper.registerService(AbsPanelMoreExpandService.class, new PanelMoreExpandServiceImpl());
+</code></pre>
                                 
                                 </section>
                             
@@ -935,7 +1178,7 @@ urlBuilder<span class="token punctuation">.</span><span class="token function">p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Device Details","level":"1.4.11","depth":2,"next":{"title":"FAQ","level":"1.5","depth":1,"path":"pages/biz_faq.md","ref":"./pages/biz_faq.md","articles":[]},"previous":{"title":"OTA","level":"1.4.10","depth":2,"path":"pages/ota/firmware_update.md","ref":"./pages/ota/firmware_update.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","richquotes","prism","-hightlight","anchors","js-sequence-diagram-full@>=0.3.1","splitter","github","anchor-navigation-ex","expandable-chapters-small","pageview-count","language-picker","hide-element"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism.css"],"lang":{"java":"java"},"ignore":["sequence"]},"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/TuyaInc/tuyasmart_bizbundle_android_doc"},"livereload":{},"splitter":{},"search":{},"addcssjs":{"css":[],"js":["../scripts/mermaid.min.js","../scripts/index.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"js-sequence-diagram-full":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"richquotes":{},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"pageview-count":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"pages/panelmore/panel_more.md","mtime":"2020-12-30T01:25:07.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-31T03:50:24.972Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Device Details","level":"1.4.11","depth":2,"next":{"title":"FAQ","level":"1.5","depth":1,"path":"pages/biz_faq.md","ref":"./pages/biz_faq.md","articles":[]},"previous":{"title":"OTA","level":"1.4.10","depth":2,"path":"pages/ota/firmware_update.md","ref":"./pages/ota/firmware_update.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","richquotes","prism","-hightlight","anchors","js-sequence-diagram-full@>=0.3.1","splitter","github","anchor-navigation-ex","expandable-chapters-small","pageview-count","language-picker","hide-element"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism.css"],"lang":{"java":"java"},"ignore":["sequence"]},"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/TuyaInc/tuyasmart_bizbundle_android_doc"},"livereload":{},"splitter":{},"search":{},"addcssjs":{"css":[],"js":["../scripts/mermaid.min.js","../scripts/index.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"js-sequence-diagram-full":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"richquotes":{},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"pageview-count":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"pages/panelmore/panel_more.md","mtime":"2021-01-08T10:28:34.696Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T10:32:10.708Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>
